@@ -2,6 +2,13 @@ import pickle
 import streamlit as st
 import numpy as np
 from PIL import Image
+import os
+
+if __name__ == "__main__":
+    # Pull the port assigned by Render, defaulting to 10000 locally
+    port = int(os.environ.get("PORT", 10000))
+    # Must use 0.0.0.0 so the proxy gateway can route traffic to it
+    app.run(host="0.0.0.0", port=port)
 class_indices=pickle.load(open('class_indices.pkl','rb'))
 model=pickle.load(open('model.pkl','rb'))
 def load_and_preprocess_image(image_path,target_size=(224,224)):
